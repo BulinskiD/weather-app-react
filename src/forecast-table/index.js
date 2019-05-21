@@ -3,12 +3,10 @@ import Table from "react-bootstrap/Table";
 
 import ForecastRow from './forecast-row';
 
-export default () => {
+export default (props) => {
 
-    const mockData = {
-        id: 1,
-        city: 'Rzeszów',
-        temperature: '18C'
+    const renderCities = () => {
+            return props.cities.map((city, index) => <ForecastRow {...city} index={index+1} key={city.id} /> );
     }
 
     return (
@@ -22,7 +20,7 @@ export default () => {
             </tr>
             </thead>
             <tbody>
-                <ForecastRow {...mockData} />
+                {renderCities()}
             </tbody>
         </Table>
     );
