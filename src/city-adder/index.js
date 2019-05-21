@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export default () => {
     return (
-        <Row>
+        <Row className="mx-4">
         <InputGroup>
             <FormControl
                 className="col-8"
