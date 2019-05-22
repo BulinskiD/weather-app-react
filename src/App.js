@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import Container from 'react-bootstrap/Container';
 import Header from './header'
-import CityAdder from './city-adder';
-import ForecastTable from './forecast-table';
+import MainPage from './main-page/index';
+import Settings from './settings';
+import Details from './details';
+
 
 import calculateAvg from './utils/calculateAvg';
+import {BrowserRouter, Route} from "react-router-dom";
 
 export default () => {
 
@@ -27,13 +30,13 @@ export default () => {
     }
 
     return (
-        <>
+            <BrowserRouter>
             <Header />
             <Container>
-                <CityAdder onAddCity={onAddCity} />
-                <hr />
-                <ForecastTable cities={cities} removeForecast={onRemoveCity} />
+                <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
+                <Route path="/settings" component={Settings} />
+                <Route path="/details" component={Details} />
             </Container>
-        </>
+            </BrowserRouter>
     );
 }
