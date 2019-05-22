@@ -4,10 +4,13 @@ import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import forecastApi from '../../api/forecastApi';
+import ErrorModal from '../../shared/error-modal';
+import * as ReactDOM from "react-dom";
 
 export default (props) => {
 
     const [city, setCity] = useState('');
+    const [error, setError] = useState(null);
 
     const onAddCityHandler = async (e) => {
         e.preventDefault();
@@ -17,7 +20,7 @@ export default (props) => {
                 props.onAddCity(response.data);
                 setCity('');
             } catch (error) {
-                console.log(error);
+                setError("Nie udało się pobrać danych! Spróbuj ponownie później");
             }
         }
     };
@@ -37,6 +40,7 @@ export default (props) => {
             <Button type="submit" className="offset-1 col-3" variant="primary"> Dodaj</Button>
         </InputGroup>
         </Row>
+            {error && ReactDOM.createPortal(<ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
         </form>
     );
 }

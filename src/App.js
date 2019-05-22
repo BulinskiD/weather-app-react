@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css';
+
 import React, {useState} from 'react'
 import Container from 'react-bootstrap/Container';
 import Header from './header'
@@ -35,7 +37,7 @@ export default () => {
             <Container>
                 <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
                 <Route path="/settings" component={Settings} />
-                <Route path="/details" component={Details} />
+                <Route path="/details/:id" component={Details} />
             </Container>
             </BrowserRouter>
     );
