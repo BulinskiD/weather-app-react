@@ -4,17 +4,26 @@ import Header from './header'
 import CityAdder from './city-adder';
 import ForecastTable from './forecast-table';
 
+import calculateAvg from './utils/calculateAvg';
+
 export default () => {
 
-    const [cities, addCity] = useState([]);
+    const [cities, setCities] = useState([]);
 
-    const onAddCity = async (data) =>{
-        console.log(data);
+    const onAddCity = data =>{
         const city = {  id: data.city.id,
                         name: data.city.name,
-                        temperature: 18 }
+                        temperature: calculateAvg(data.list) }
 
-        await addCity([...cities, city]);
+        if(cities.filter(item => city.id === item.id).length !== 0 ){
+            alert("Already on list!");
+        }else {
+            setCities([...cities, city]);
+        }
+    }
+
+    const onRemoveCity = (city) => {
+        setCities(cities.filter(cityItem=> cityItem.id !== city.id));
     }
 
     return (
@@ -23,7 +32,7 @@ export default () => {
             <Container>
                 <CityAdder onAddCity={onAddCity} />
                 <hr />
-                <ForecastTable cities={cities} />
+                <ForecastTable cities={cities} removeForecast={onRemoveCity} />
             </Container>
         </>
     );

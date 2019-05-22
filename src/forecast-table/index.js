@@ -6,7 +6,10 @@ import ForecastRow from './forecast-row';
 export default (props) => {
 
     const renderCities = () => {
-            return props.cities.map((city, index) => <ForecastRow {...city} index={index+1} key={city.id} /> );
+            return props.cities.map((city, index) => <ForecastRow removeForecast={props.removeForecast}
+                                                                  city={city}
+                                                                  index={index+1}
+                                                                  key={city.id} /> );
     }
 
     return (

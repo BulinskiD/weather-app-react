@@ -11,14 +11,15 @@ export default (props) => {
 
     const onAddCityHandler = async (e) => {
         e.preventDefault();
-       try{
-           const response = await forecastApi.get('', {params: {q: city}});
-           props.onAddCity(response.data);
-           setCity('');
-       }
-       catch(error){
-           console.log(error);
-       }
+        if(city.length >= 3) {
+            try {
+                const response = await forecastApi.get('', {params: {q: city}});
+                props.onAddCity(response.data);
+                setCity('');
+            } catch (error) {
+                console.log(error);
+            }
+        }
     };
 
     return (
