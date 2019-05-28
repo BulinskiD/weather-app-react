@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error modal should render correctly with given props 1`] = `
+<ModalDialog>
+  <ModalHeader
+    closeButton={false}
+    closeLabel="Close"
+  >
+    <ModalTitle>
+      Wystąpił błąd!
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="text-center"
+    >
+      Error
+    </div>
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      disabled={false}
+      type="button"
+      variant="danger"
+    >
+      Zamknij
+    </Button>
+  </ModalFooter>
+</ModalDialog>
+`;

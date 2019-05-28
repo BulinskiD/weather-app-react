@@ -37,7 +37,7 @@ export default (props) => {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             />
-            <Button type="submit" className="offset-1 col-3" variant="primary"> Dodaj</Button>
+            <Button type="submit" className="offset-1 col-3" variant="primary">Dodaj</Button>
         </InputGroup>
         </Row>
             {error && ReactDOM.createPortal(<ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}

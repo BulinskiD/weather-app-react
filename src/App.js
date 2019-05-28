@@ -12,8 +12,13 @@ import calculateAvg from './utils/calculateAvg';
 import {BrowserRouter, Route} from "react-router-dom";
 
 export default () => {
+    const storage = window.localStorage;
 
     const [cities, setCities] = useState([]);
+
+    const getCitiesFromLocalStorage = () => {
+
+    }
 
     const onAddCity = data =>{
         const city = {  id: data.city.id,
@@ -24,11 +29,13 @@ export default () => {
             alert("Already on list!");
         }else {
             setCities([...cities, city]);
+            storage.setItem(city.id, city);
         }
     }
 
     const onRemoveCity = (city) => {
         setCities(cities.filter(cityItem=> cityItem.id !== city.id));
+        storage.removeItem(city.id);
     }
 
     return (
