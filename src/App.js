@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container';
 import Header from './header'
 import MainPage from './main-page/index';
@@ -16,9 +16,12 @@ export default () => {
 
     const [cities, setCities] = useState([]);
 
-    const getCitiesFromLocalStorage = () => {
-
-    }
+    useEffect(() => {
+        //Get cities from localStorage, and store them in state
+        setCities(JSON.parse(storage.getItem("cities")));
+        },
+        // eslint-disable-next-line
+        []);
 
     const onAddCity = data =>{
         const city = {  id: data.city.id,
@@ -29,13 +32,17 @@ export default () => {
             alert("Already on list!");
         }else {
             setCities([...cities, city]);
-            storage.setItem(city.id, city);
+            //Store stringified array in localStorage
+            //Should be placed in effect return function?
+            storage.setItem("cities", JSON.stringify([...cities, city]));
         }
     }
 
     const onRemoveCity = (city) => {
         setCities(cities.filter(cityItem=> cityItem.id !== city.id));
-        storage.removeItem(city.id);
+        //Store stringified array in localStorage
+        //Should be placed in effect return function?
+        storage.setItem("cities", JSON.stringify(cities.filter(cityItem=> cityItem.id !== city.id)));
     }
 
     return (
