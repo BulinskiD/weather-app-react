@@ -14,6 +14,6 @@ describe('Calculate avg', ()=>{
     });
 
     if('should throw error for data === null', () => {
-       expect(calculateAvg(null)).toThrow("Data cannot be null");
+       expect(calculateAvg(null)).toThrow(Error("Data cannot be null"));
     });
 });

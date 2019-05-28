@@ -1,7 +1,7 @@
 export default (data) =>{
     let avg = 0;
     if(!data)
-        throw "Data cannot be null";
+        throw Error("Data cannot be null");
 
     if(data.length === 0)
         return avg.toFixed(2);
