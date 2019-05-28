@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import LinkButton from './link-button';
 import {shallow} from "enzyme";
 
