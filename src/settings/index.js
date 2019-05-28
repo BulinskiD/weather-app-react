@@ -8,12 +8,12 @@ export default () =>{
        return(
            <div onChange={toggleUnit}>
                <div>
-                   <input type="radio"id="cel" name="unit" value="metric"
+                   <input type="radio"id="cel" name="unit" value="metric" checked={unit === "metric"}
                    />
                    <label htmlFor="cel">Celsjusz</label>
                </div>
                <div>
-                   <input type="radio" id="far" name="unit" value="imperial" />
+                   <input type="radio" id="far" name="unit" value="imperial" checked={unit === "imperial"} />
                    <label htmlFor="far">Fahrenheit</label>
                </div>
            </div>);
