@@ -1,19 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
 import React, {useState, useEffect} from 'react'
+import {BrowserRouter, Route} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+
 import Header from './header'
 import MainPage from './main-page/index';
 import Settings from './settings';
 import Details from './details';
-
-
+import UnitContext from './context/unit-context';
 import calculateAvg from './utils/calculateAvg';
-import {BrowserRouter, Route} from "react-router-dom";
 
 export default () => {
     const storage = window.localStorage;
 
+    //State for unit context
+    const [unit, changeUnit] = useState("metric");
+
+    //TODO Refresh temperatures when unit changes
+    const toggleUnit = () => {
+        const unitParam = unit === "metric" ? "imperial" : "metric";
+        changeUnit(unitParam);
+    }
+
+    //Cities state
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
@@ -47,12 +57,14 @@ export default () => {
 
     return (
             <BrowserRouter>
-            <Header />
-            <Container>
-                <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
-                <Route path="/settings" component={Settings} />
-                <Route path="/details/:id" component={Details} />
-            </Container>
+                <UnitContext.Provider value={{unit, toggleUnit}}>
+                    <Header />
+                    <Container>
+                        <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
+                        <Route path="/settings" component={Settings} />
+                        <Route path="/details/:id" component={Details} />
+                    </Container>
+                </UnitContext.Provider>
             </BrowserRouter>
     );
 }

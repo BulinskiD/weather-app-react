@@ -16,7 +16,7 @@ export default (props) => {
         e.preventDefault();
         if(city.length >= 3) {
             try {
-                const response = await forecastApi.get('', {params: {q: city}});
+                const response = await forecastApi.get('', {params: {q: city, units: props.unit}});
                 props.onAddCity(response.data);
                 setCity('');
             } catch (error) {

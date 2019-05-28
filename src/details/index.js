@@ -15,12 +15,12 @@ export default (props) => {
         const fetchData = async () => {
             const result = await forecastApi.get("", {params: {id: props.match.params.id}})
             setCityDetails(result.data);
-            console.log(result.data);
         }
         fetchData();
     }, [props.match.params.id]);
 
 
+    //TODO Add context for temperature unit
     if(cityDetails.city)
         return (
             <div>
