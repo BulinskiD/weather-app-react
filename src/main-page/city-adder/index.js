@@ -22,6 +22,7 @@ export default (props) => {
                 setCity('');
             } catch (error) {
                 setError(handleError(error));
+                setCity("");
             }
         }
     };
@@ -34,14 +35,13 @@ export default (props) => {
                 className="col-8"
                 placeholder="Nazwa miasta"
                 aria-label="city"
-                aria-describedby="basic-addon1"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             />
             <Button type="submit" className="offset-1 col-3" variant="primary">Dodaj</Button>
         </InputGroup>
         </Row>
-            {error && ReactDOM.createPortal(<ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
+            {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
         </form>
     );
 }

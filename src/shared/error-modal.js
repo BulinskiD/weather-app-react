@@ -5,7 +5,8 @@ import "./error-modal.css";
 
 export default (props) => {
     return (
-        <Modal.Dialog>
+        <Modal show={props.show} onHide={props.onClose}>
+        <Modal.Dialog style={{zIndex: 10000}}>
             <Modal.Header>
                 <Modal.Title>Wystąpił błąd!</Modal.Title>
             </Modal.Header>
@@ -18,5 +19,6 @@ export default (props) => {
                 <Button onClick={props.onClose} variant="danger">Zamknij</Button>
             </Modal.Footer>
         </Modal.Dialog>
+        </Modal>
     );
 }

@@ -80,9 +80,8 @@ export default () => {
                         <Route path="/settings" component={Settings} />
                         <Route path="/details/:id" component={Details} />
                     </Container>
+                    {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
                 </UnitContext.Provider>
-
-                {error && ReactDOM.createPortal(<ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
             </BrowserRouter>
     );
 }
