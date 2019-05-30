@@ -2,6 +2,8 @@ import React from 'react';
 import LinkButton from '../shared/link-button';
 import DataRow from '../details/data-row';
 import UnitContext from '../context/unit-context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowCircleLeft, faCog} from '@fortawesome/free-solid-svg-icons'
 
 export default () =>{
    const radioButtons = (unit, toggleUnit) => {
@@ -28,7 +30,10 @@ return (
                 <hr />
                 <DataRow title="Jednostka" data={radioButtons(unit, toggleUnit)} />
                 <hr />
-                <LinkButton path="/" >Powrót</LinkButton>
+                <LinkButton path="/">
+                    <FontAwesomeIcon icon={faArrowCircleLeft}/>
+                    Powrót
+                </LinkButton>
             </div>
         )}
     </UnitContext.Consumer>

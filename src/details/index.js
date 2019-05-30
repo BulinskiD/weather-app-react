@@ -5,6 +5,8 @@ import forecastApi from '../api/forecastApi';
 import calculateAvg from '../utils/calculateAvg';
 import DataRow from "./data-row";
 import LinkButton from "../shared/link-button";
+import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default (props) => {
 
@@ -30,7 +32,9 @@ export default (props) => {
                     <DataRow data={cityDetails.city.coord.lon} title='Długość geograficzna'></DataRow>
                     <DataRow data={calculateAvg(cityDetails.list)} title='Srednia temperatura'></DataRow>
                 <hr />
-                <LinkButton path="/">Powrót</LinkButton>
+                <LinkButton path="/">
+                    <FontAwesomeIcon icon={faArrowCircleLeft}/>Powrót
+                </LinkButton>
             </div>
         );
     else

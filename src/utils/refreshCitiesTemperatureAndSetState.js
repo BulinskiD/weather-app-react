@@ -13,11 +13,10 @@ export default (units, cities, setCities, setError) => {
     });
     Promise.all(citiesPromises).then(newCities => {
         const newState = newCities.map(cityObj => {
-            return {
-                id: cityObj.data.city.id,
-                name: cityObj.data.city.name,
-                temperature: calculateAvg(cityObj.data.list)
-            }
+            return {  id: cityObj.data.city.id,
+                      name: cityObj.data.city.name,
+                      temperature: calculateAvg(cityObj.data.list)
+                    }
         })
         setCities(newState);
     }).catch(error => {
