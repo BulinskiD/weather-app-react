@@ -11,15 +11,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 export default (props) => {
 
     const [cityDetails, setCityDetails] = useState({});
-
+    const [unitString, setUnitString] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await forecastApi.get("", {params: {id: props.match.params.id}})
+            const result = await forecastApi.get("", {params: {id: props.match.params.id, units: props.unit}})
             setCityDetails(result.data);
+            const unitSymbol =props.unit==='metric' ? " C" : " F"
+            setUnitString(unitSymbol);
         }
         fetchData();
-    }, [props.match.params.id]);
+    }, [props.match.params.id, props.unit]);
 
 
     //TODO Add context for temperature unit
@@ -30,7 +32,7 @@ export default (props) => {
                 <hr />
                     <DataRow data={cityDetails.city.coord.lat} title='Szerokość geograficzna'></DataRow>
                     <DataRow data={cityDetails.city.coord.lon} title='Długość geograficzna'></DataRow>
-                    <DataRow data={calculateAvg(cityDetails.list)} title='Srednia temperatura'></DataRow>
+                    <DataRow data={calculateAvg(cityDetails.list) + unitString} title='Srednia temperatura'></DataRow>
                 <hr />
                 <LinkButton path="/">
                     <FontAwesomeIcon icon={faArrowCircleLeft}/>Powrót

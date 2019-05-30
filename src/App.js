@@ -79,7 +79,7 @@ export default () => {
                     <Container>
                         <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
                         <Route path="/settings" component={Settings} />
-                        <Route path="/details/:id" component={Details} />
+                        <Route path="/details/:id" component={(props) => <Details {...props} unit={unit} />} />
                     </Container>
                     {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
                 </UnitContext.Provider>
