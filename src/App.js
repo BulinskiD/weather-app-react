@@ -20,17 +20,28 @@ export default () => {
 
     const toggleUnit = () => {
         const unitParam = unit === "metric" ? "imperial" : "metric";
+        localStorage.setItem("unit", unitParam);
         changeUnit(unitParam);
         refreshCitiesTemperatureAndSetState(unitParam, cities, setCities);
     }
 
     //Cities state
     const [cities, setCities] = useState([]);
-    
+
     useEffect(() => {
         //Get cities from localStorage, and store them in state
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
-            refreshCitiesTemperatureAndSetState(unit, citiesFromStorage, setCities);
+            let unitParam = storage.getItem("unit");
+
+            //If unit param is set in localStorage, set in in state, else use default value
+            if(unitParam) {
+                changeUnit(unitParam);
+            } else {
+                unitParam = unit;
+            }
+
+            if(citiesFromStorage)
+                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities);
         },
         // eslint-disable-next-line
         []);
