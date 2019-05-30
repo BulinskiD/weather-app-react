@@ -5,14 +5,14 @@ import ForecastTable from "./forecast-table";
 
 export default (props) => {
     return (
-        <>
             <UnitContext.Consumer>
                 {({unit}) => (
+                    <>
                     <CityAdder unit={unit} onAddCity={props.onAddCity}/>
+                    <hr />
+                    <ForecastTable cities={props.cities} unit={unit} removeForecast={props.onRemoveCity} />
+                    </>
                     )}
             </UnitContext.Consumer>
-            <hr />
-            <ForecastTable cities={props.cities} removeForecast={props.onRemoveCity} />
-        </>
     );
 }

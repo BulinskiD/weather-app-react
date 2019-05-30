@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react'
 import {BrowserRouter, Route} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 
+import refreshCitiesTemperatureAndSetState from './utils/refreshCitiesTemperatureAndSetState';
 import Header from './header'
 import MainPage from './main-page/index';
 import Settings from './settings';
@@ -17,18 +18,19 @@ export default () => {
     //State for unit context
     const [unit, changeUnit] = useState("metric");
 
-    //TODO Refresh temperatures when unit changes
     const toggleUnit = () => {
         const unitParam = unit === "metric" ? "imperial" : "metric";
         changeUnit(unitParam);
+        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities);
     }
 
     //Cities state
     const [cities, setCities] = useState([]);
-
+    
     useEffect(() => {
         //Get cities from localStorage, and store them in state
-        setCities(JSON.parse(storage.getItem("cities")));
+            const citiesFromStorage = JSON.parse(storage.getItem("cities"));
+            refreshCitiesTemperatureAndSetState(unit, citiesFromStorage, setCities);
         },
         // eslint-disable-next-line
         []);

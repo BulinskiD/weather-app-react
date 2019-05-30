@@ -8,13 +8,13 @@ export default (props) => {
         props.removeForecast(props.city);
     }
 
-
+    console.log(props.unit);
     //TODO Add context for displaying correct unit
     return (
       <tr>
           <td className="text-center">{props.index}</td>
           <td className="text-center"><Link to={'/details/'+props.city.id}>{props.city.name}</Link></td>
-          <td className="text-center">{props.city.temperature} &#176;C</td>
+          <td className="text-center">{props.city.temperature} &#176; {props.unit==='metric' ? 'C' : 'F'}</td>
           <td className="text-center">
               <Button onClick={onClickHandler} className="col-12 bg-light text-danger" variant="danger">Usuń</Button>
           </td>

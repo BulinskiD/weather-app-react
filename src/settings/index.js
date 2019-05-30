@@ -6,14 +6,14 @@ import UnitContext from '../context/unit-context';
 export default () =>{
    const radioButtons = (unit, toggleUnit) => {
        return(
+           /** ASK ABOUT IT **/
            <div onChange={toggleUnit}>
                <div>
-                   <input type="radio"id="cel" name="unit" value="metric" checked={unit === "metric"}
-                   />
+                   <input type="radio"id="cel" name="unit" value="metric" onChange={() => {}} checked={unit === "metric"} />
                    <label htmlFor="cel">Celsjusz</label>
                </div>
                <div>
-                   <input type="radio" id="far" name="unit" value="imperial" checked={unit === "imperial"} />
+                   <input type="radio" id="far" name="unit" value="imperial" onChange={() => {}}checked={unit === "imperial"} />
                    <label htmlFor="far">Fahrenheit</label>
                </div>
            </div>);
