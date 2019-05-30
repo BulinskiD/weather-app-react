@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import forecastApi from './api/forecastApi';
 
 import refreshCitiesTemperatureAndSetState from './utils/refreshCitiesTemperatureAndSetState';
 import Header from './header'
@@ -13,6 +14,7 @@ import Details from './details';
 import UnitContext from './context/unit-context';
 import calculateAvg from './utils/calculateAvg';
 import ErrorModal from "./shared/error-modal";
+import handleError from "./utils/handleError";
 
 export default () => {
     const storage = window.localStorage;
@@ -33,7 +35,6 @@ export default () => {
         refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError);
     }
 
-
     useEffect(() => {
         //Get cities from localStorage, and store them in state
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
@@ -51,16 +52,21 @@ export default () => {
         // eslint-disable-next-line
         []);
 
-    const onAddCity = data =>{
-        const city = {  id: data.city.id,
-                        name: data.city.name,
-                        temperature: calculateAvg(data.list) }
-        if(cities.filter(item => city.id === item.id).length !== 0 ){
-            setError("Miasto znajduje się już na liście!");
-        } else {
-            setCities([...cities, city]);
-            //Should be placed in effect return function?
-            storage.setItem("cities", JSON.stringify([...cities, city]));
+    const onAddCity = async city =>{
+        try {
+            const {data} = await forecastApi.get('', {params: {q: city, units: unit}});
+            const newCity = {  id: data.city.id,
+                name: data.city.name,
+                temperature: calculateAvg(data.list) }
+            if(cities.filter(item => newCity.id === item.id).length !== 0 ){
+                setError("Miasto znajduje się już na liście!");
+            } else {
+                setCities([...cities, newCity]);
+                //Should be placed in effect return function?
+                storage.setItem("cities", JSON.stringify([...cities, newCity]));
+            }
+        } catch(error) {
+            setError(handleError(error));
         }
     }
 
