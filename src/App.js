@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 
@@ -11,6 +12,7 @@ import Settings from './settings';
 import Details from './details';
 import UnitContext from './context/unit-context';
 import calculateAvg from './utils/calculateAvg';
+import ErrorModal from "./shared/error-modal";
 
 export default () => {
     const storage = window.localStorage;
@@ -18,15 +20,19 @@ export default () => {
     //State for unit context
     const [unit, changeUnit] = useState("metric");
 
+    //Cities state
+    const [cities, setCities] = useState([]);
+
+    //Error state
+    const [error, setError] = useState(null);
+
     const toggleUnit = () => {
         const unitParam = unit === "metric" ? "imperial" : "metric";
         localStorage.setItem("unit", unitParam);
         changeUnit(unitParam);
-        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities);
+        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError);
     }
 
-    //Cities state
-    const [cities, setCities] = useState([]);
 
     useEffect(() => {
         //Get cities from localStorage, and store them in state
@@ -34,14 +40,13 @@ export default () => {
             let unitParam = storage.getItem("unit");
 
             //If unit param is set in localStorage, set in in state, else use default value
-            if(unitParam) {
+            if(unitParam)
                 changeUnit(unitParam);
-            } else {
+            else
                 unitParam = unit;
-            }
 
             if(citiesFromStorage)
-                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities);
+                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError);
         },
         // eslint-disable-next-line
         []);
@@ -50,12 +55,10 @@ export default () => {
         const city = {  id: data.city.id,
                         name: data.city.name,
                         temperature: calculateAvg(data.list) }
-
         if(cities.filter(item => city.id === item.id).length !== 0 ){
-            alert("Already on list!");
-        }else {
+            setError("Miasto znajduje się już na liście!");
+        } else {
             setCities([...cities, city]);
-            //Store stringified array in localStorage
             //Should be placed in effect return function?
             storage.setItem("cities", JSON.stringify([...cities, city]));
         }
@@ -63,7 +66,7 @@ export default () => {
 
     const onRemoveCity = (city) => {
         setCities(cities.filter(cityItem=> cityItem.id !== city.id));
-        //Store stringified array in localStorage
+
         //Should be placed in effect return function?
         storage.setItem("cities", JSON.stringify(cities.filter(cityItem=> cityItem.id !== city.id)));
     }
@@ -78,6 +81,8 @@ export default () => {
                         <Route path="/details/:id" component={Details} />
                     </Container>
                 </UnitContext.Provider>
+
+                {error && ReactDOM.createPortal(<ErrorModal onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
             </BrowserRouter>
     );
 }

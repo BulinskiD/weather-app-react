@@ -1,13 +1,14 @@
 //Refresh cities
 import forecastApi from "../api/forecastApi";
 import calculateAvg from "./calculateAvg";
+import handleError from "./handleError";
 
-export default (units, cities, setCities) => {
+export default (units, cities, setCities, setError) => {
     const citiesPromises = cities.map(async ({id}) => {
         try {
             return await forecastApi.get('', {params: {id, units }});
         } catch(error) {
-            /** TODO Handle errors here **/
+            setError(handleError(error));
         }
     });
     Promise.all(citiesPromises).then(newCities => {
@@ -19,5 +20,7 @@ export default (units, cities, setCities) => {
             }
         })
         setCities(newState);
-    }).catch(error => {/** TODO Handle error here **/});
+    }).catch(error => {
+        setError(handleError(error));
+    });
 }

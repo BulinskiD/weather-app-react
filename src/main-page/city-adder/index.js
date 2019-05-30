@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import forecastApi from '../../api/forecastApi';
 import ErrorModal from '../../shared/error-modal';
 import * as ReactDOM from "react-dom";
+import handleError from "../../utils/handleError";
 
 export default (props) => {
 
@@ -20,7 +21,7 @@ export default (props) => {
                 props.onAddCity(response.data);
                 setCity('');
             } catch (error) {
-                setError("Nie udało się pobrać danych! Spróbuj ponownie później");
+                setError(handleError(error));
             }
         }
     };
