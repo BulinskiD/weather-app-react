@@ -12,7 +12,6 @@ export default (units, cities, setCities) => {
     });
     Promise.all(citiesPromises).then(newCities => {
         const newState = newCities.map(cityObj => {
-            console.log("cityObj", cityObj);
             return {
                 id: cityObj.data.city.id,
                 name: cityObj.data.city.name,

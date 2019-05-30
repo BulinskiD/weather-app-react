@@ -8,8 +8,6 @@ export default (props) => {
         props.removeForecast(props.city);
     }
 
-    console.log(props.unit);
-    //TODO Add context for displaying correct unit
     return (
       <tr>
           <td className="text-center">{props.index}</td>
