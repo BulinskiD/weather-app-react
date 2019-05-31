@@ -4,7 +4,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearchPlus} from '@fortawesome/free-solid-svg-icons'
+import {faSearchPlus, faSpinner} from '@fortawesome/free-solid-svg-icons'
+import LoadingContext from "../../context/loading-context";
 
 export default (props) => {
 
@@ -30,7 +31,11 @@ export default (props) => {
                 onChange={(e) => setCity(e.target.value)}
             />
             <Button type="submit" className="offset-1 col-3" variant="primary">
-                <FontAwesomeIcon style={{marginRight: "3%"}} icon={faSearchPlus}/>
+                <LoadingContext.Consumer>
+                    {({loading}) => {
+                        return loading ? <FontAwesomeIcon className="fa-spin" style={{marginRight: "3%"}} icon={faSpinner}/> : <FontAwesomeIcon style={{marginRight: "3%"}} icon={faSearchPlus}/>
+                    }}
+                </LoadingContext.Consumer>
                 Dodaj
             </Button>
         </InputGroup>

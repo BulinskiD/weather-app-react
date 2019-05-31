@@ -1,4 +1,4 @@
-export default (error) => {
+export default (error, setLoading) => {
     console.log(error);
     let errorMessage;
     switch(error.response.status) {
@@ -11,5 +11,6 @@ export default (error) => {
         default:
             errorMessage = "Coś poszło nie tak..."
     }
+    setLoading(false);
     return errorMessage;
 }

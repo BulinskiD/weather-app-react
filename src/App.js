@@ -12,6 +12,7 @@ import MainPage from './main-page/index';
 import Settings from './settings';
 import Details from './details';
 import UnitContext from './context/unit-context';
+import LoadingContext from './context/loading-context';
 import calculateAvg from './utils/calculateAvg';
 import ErrorModal from "./shared/error-modal";
 import handleError from "./utils/handleError";
@@ -28,11 +29,14 @@ export default () => {
     //Error state
     const [error, setError] = useState(null);
 
+    //Loading state
+    const [loading, setLoading] = useState("true");
+
     const toggleUnit = () => {
         const unitParam = unit === "metric" ? "imperial" : "metric";
         localStorage.setItem("unit", unitParam);
         changeUnit(unitParam);
-        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError);
+        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
     }
 
     useEffect(() => {
@@ -45,12 +49,16 @@ export default () => {
             else
                 unitParam = unit;
             if(citiesFromStorage)
-                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError);
+                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
+            else {
+                setLoading(false);
+            }
         },
         // eslint-disable-next-line
         []);
 
     const onAddCity = async city =>{
+        setLoading(true);
         try {
             const {data} = await forecastApi.get('', {params: {q: city, units: unit}});
             const newCity = {  id: data.city.id, name: data.city.name, temperature: calculateAvg(data.list) }
@@ -62,8 +70,10 @@ export default () => {
                 storage.setItem("cities", JSON.stringify([...cities, newCity]));
             }
         } catch(error) {
-            setError(handleError(error));
+            setError(handleError(error, setLoading));
         }
+
+        setLoading(false);
     }
 
     const onRemoveCity = (city) => {
@@ -74,15 +84,21 @@ export default () => {
 
     return (
             <BrowserRouter>
-                <UnitContext.Provider value={{unit, toggleUnit}}>
-                    <Header />
-                    <Container>
-                        <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
-                        <Route path="/settings" component={Settings} />
-                        <Route path="/details/:id" component={(props) => <Details {...props} unit={unit} />} />
-                    </Container>
-                    {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
-                </UnitContext.Provider>
+                <LoadingContext.Provider value={{loading}}>
+                    <UnitContext.Provider value={{unit, toggleUnit}}>
+
+                        <Header />
+
+                        <Container>
+                            <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
+                            <Route path="/settings" component={Settings} />
+                            <Route path="/details/:id" component={(props) => <Details {...props} unit={unit} />} />
+                        </Container>
+
+                        {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
+
+                    </UnitContext.Provider>
+                </LoadingContext.Provider>
             </BrowserRouter>
     );
 }

@@ -22,9 +22,7 @@ export default (props) => {
         }
         fetchData();
     }, [props.match.params.id, props.unit]);
-
-
-    //TODO Add context for temperature unit
+    
     if(cityDetails.city)
         return (
             <div>
