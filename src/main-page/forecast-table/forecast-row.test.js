@@ -11,6 +11,10 @@ describe('Forecast row', ()=>{
     const index = 1;
     const unit = 'imperial';
 
+    beforeEach(()=>{
+        clickFn.mockClear();
+    });
+
     it('should render correctly with given props', ()=>{
         const component = shallow(<ForecastRow index={index} city={city} unit={unit} onRemoveCity={clickFn} />);
         expect(component).toMatchSnapshot();
