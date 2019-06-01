@@ -45,7 +45,7 @@ ForecastTable.propTypes = {
     cities: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string,
-        temperature: PropTypes.number
+        temperature: PropTypes.string
     }))
 }
 

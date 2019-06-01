@@ -16,7 +16,8 @@ DataRow.propTypes = {
     title: PropTypes.string,
     data: PropTypes.oneOfType([
         PropTypes.number,
-        PropTypes.string
+        PropTypes.string,
+        PropTypes.element
     ])
 }
 

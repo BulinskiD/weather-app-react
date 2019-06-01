@@ -32,7 +32,7 @@ ForecastRow.propTypes = {
     city: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string,
-        temperature: PropTypes.number
+        temperature: PropTypes.string
     }),
     unit: PropTypes.string
 }
