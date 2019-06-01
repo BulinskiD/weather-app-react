@@ -8,7 +8,7 @@ import {faMinusCircle} from '@fortawesome/free-solid-svg-icons'
 const ForecastRow = (props) => {
 
     const onClickHandler = () => {
-        props.removeForecast(props.city);
+        props.onRemoveCity(props.city);
     }
 
     return (
@@ -33,8 +33,9 @@ ForecastRow.propTypes = {
         id: PropTypes.number,
         name: PropTypes.string,
         temperature: PropTypes.string
-    }),
-    unit: PropTypes.string
+    }).isRequired,
+    unit: PropTypes.string,
+    onRemoveCity: PropTypes.func
 }
 
 

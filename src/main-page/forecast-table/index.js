@@ -10,7 +10,7 @@ const ForecastTable = (props) => {
 
     const renderCities = () => {
         return props.cities.map((city, index) => (
-            <ForecastRow removeForecast={props.onRemoveCity}
+            <ForecastRow onRemoveCity={props.onRemoveCity}
                          city={city}
                          index={index + 1}
                          unit={props.unit}
