@@ -12,6 +12,7 @@ export default (units, cities, setCities, setError, setLoading) => {
             setError(handleError(error, setLoading));
         }
     });
+
     Promise.all(citiesPromises).then(newCities => {
         const newState = newCities.map(cityObj => {
             return {  id: cityObj.data.city.id,

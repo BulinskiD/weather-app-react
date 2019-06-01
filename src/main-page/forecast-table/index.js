@@ -1,16 +1,16 @@
 import React from 'react';
-import Table from "react-bootstrap/Table";
-
+import Table from 'react-bootstrap/Table';
+import PropTypes from 'prop-types';
 import LoadingContext from '../../context/loading-context';
 
 import ForecastRow from './forecast-row';
 import Loader from '../../shared/loader';
 
-export default (props) => {
+const ForecastTable = (props) => {
 
     const renderCities = () => {
         return props.cities.map((city, index) => (
-            <ForecastRow removeForecast={props.removeForecast}
+            <ForecastRow removeForecast={props.onRemoveCity}
                          city={city}
                          index={index + 1}
                          unit={props.unit}
@@ -37,3 +37,16 @@ export default (props) => {
         </LoadingContext.Consumer>
     );
 }
+
+
+ForecastTable.propTypes = {
+    onRemoveCity: PropTypes.func,
+    unit: PropTypes.string,
+    cities: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        temperature: PropTypes.number
+    }))
+}
+
+export default ForecastTable;

@@ -1,9 +1,10 @@
 import React from 'react';
 import LinkButton from '../shared/link-button';
 import DataRow from '../details/data-row';
-import UnitContext from '../context/unit-context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowCircleLeft} from '@fortawesome/free-solid-svg-icons'
+
+import UnitContext from '../context/unit-context';
 
 export default () =>{
    const radioButtons = (unit, toggleUnit) => {

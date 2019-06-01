@@ -10,5 +10,5 @@ export default (data) =>{
         avg += item.main.temp;
     });
     avg = avg / data.length;
-    return avg.toFixed(2);
+    return parseFloat(avg.toFixed(2));
 }

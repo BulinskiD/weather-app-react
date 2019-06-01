@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error modal should render correctly with given props 1`] = `
-<ModalDialog>
+<Bootstrap(Modal)
+  onHide={[MockFunction]}
+>
   <ModalHeader
     closeButton={false}
     closeLabel="Close"
@@ -28,5 +30,5 @@ exports[`Error modal should render correctly with given props 1`] = `
       Zamknij
     </Button>
   </ModalFooter>
-</ModalDialog>
+</Bootstrap(Modal)>
 `;

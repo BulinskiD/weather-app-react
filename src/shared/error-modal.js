@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-//import "./error-modal.css";
 
-export default (props) => {
+const ErrorModal =  (props) => {
     return (
         <Modal show={props.show} onHide={props.onClose}>
             <Modal.Header>
@@ -20,3 +21,11 @@ export default (props) => {
         </Modal>
     );
 }
+
+ErrorModal.propTypes = {
+    onClose: PropTypes.func,
+    children: PropTypes.string
+}
+
+
+export default ErrorModal;

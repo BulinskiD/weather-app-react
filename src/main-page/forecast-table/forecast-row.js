@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMinusCircle} from '@fortawesome/free-solid-svg-icons'
 
-export default (props) => {
+const ForecastRow = (props) => {
 
     const onClickHandler = () => {
         props.removeForecast(props.city);
@@ -24,3 +25,17 @@ export default (props) => {
       </tr>
     );
 }
+
+
+ForecastRow.propTypes = {
+    index: PropTypes.number,
+    city: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        temperature: PropTypes.number
+    }),
+    unit: PropTypes.string
+}
+
+
+export default ForecastRow;

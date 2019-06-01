@@ -48,11 +48,11 @@ export default () => {
                 changeUnit(unitParam);
             else
                 unitParam = unit;
+
             if(citiesFromStorage)
                 refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
-            else {
+            else
                 setLoading(false);
-            }
         },
         // eslint-disable-next-line
         []);
@@ -102,3 +102,4 @@ export default () => {
             </BrowserRouter>
     );
 }
+

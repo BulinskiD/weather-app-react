@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
@@ -7,13 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearchPlus, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import LoadingContext from "../../context/loading-context";
 
-export default (props) => {
+const CityAdder = (props) => {
 
     const [city, setCity] = useState('');
 
-    const onAddCityHandler = async (e) => {
+    const onAddCityHandler = e => {
         e.preventDefault();
         if(city.length >= 3) {
+            console.log(city);
             props.onAddCity(city);
             setCity("");
         }
@@ -43,3 +46,10 @@ export default (props) => {
         </form>
     );
 }
+
+CityAdder.propTypes = {
+    unit: PropTypes.string,
+    onAddCity: PropTypes.func
+};
+
+export default CityAdder;

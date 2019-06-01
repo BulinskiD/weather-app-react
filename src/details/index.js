@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-
-import forecastApi from '../api/forecastApi';
-
-import calculateAvg from '../utils/calculateAvg';
-import DataRow from "./data-row";
-import LinkButton from "../shared/link-button";
+import PropTypes from 'prop-types';
 import {faArrowCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export default (props) => {
+import forecastApi from '../api/forecastApi';
+import calculateAvg from '../utils/calculateAvg';
+import DataRow from "./data-row";
+import LinkButton from "../shared/link-button";
+
+
+const Details = (props) => {
 
     const [cityDetails, setCityDetails] = useState({});
     const [unitString, setUnitString] = useState("");
@@ -40,3 +41,10 @@ export default (props) => {
     else
         return ''
 }
+
+
+Details.propTypes = {
+    unit: PropTypes.string
+}
+
+export default Details;
