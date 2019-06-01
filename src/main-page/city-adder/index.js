@@ -24,25 +24,25 @@ const CityAdder = (props) => {
 
     return (
         <form onSubmit={onAddCityHandler}>
-        <Row className="mx-4">
+            <Row className="mx-4">
                 <InputGroup>
-            <FormControl
-                className="col-8"
-                placeholder="Nazwa miasta"
-                aria-label="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-            />
-            <Button type="submit" className="offset-1 col-3" variant="primary">
-                <LoadingContext.Consumer>
-                    {({loading}) => {
-                        return loading ? <FontAwesomeIcon className="fa-spin" style={{marginRight: "3%"}} icon={faSpinner}/> : <FontAwesomeIcon style={{marginRight: "3%"}} icon={faSearchPlus}/>
-                    }}
-                </LoadingContext.Consumer>
-                Dodaj
-            </Button>
-        </InputGroup>
-        </Row>
+                    <FormControl
+                        className="col-8"
+                        placeholder="Nazwa miasta"
+                        aria-label="city"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    />
+                <Button type="submit" className="offset-1 col-3" variant="primary">
+                    <LoadingContext.Consumer>
+                        {({loading}) => {
+                            return loading ? <FontAwesomeIcon className="fa-spin" style={{marginRight: "3%"}} icon={faSpinner}/> : <FontAwesomeIcon style={{marginRight: "3%"}} icon={faSearchPlus}/>
+                        }}
+                    </LoadingContext.Consumer>
+                    Dodaj
+                </Button>
+                </InputGroup>
+            </Row>
         </form>
     );
 }
