@@ -11,6 +11,7 @@ handleError.mockReturnValue("Test");
 
 afterEach(()=>{
     mockAxios.reset();
+    handleError.mockClear();
 });
 
 describe('Details', ()=>{

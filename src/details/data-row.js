@@ -13,12 +13,12 @@ const DataRow = (props) => {
 }
 
 DataRow.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
     data: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.string,
         PropTypes.element
-    ])
+    ]).isRequired
 }
 
 export default DataRow;
