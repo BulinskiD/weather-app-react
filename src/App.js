@@ -33,10 +33,14 @@ export default () => {
     const [loading, setLoading] = useState("true");
 
     const toggleUnit = () => {
-        const unitParam = unit === "metric" ? "imperial" : "metric";
-        localStorage.setItem("unit", unitParam);
-        changeUnit(unitParam);
-        refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
+        if(navigator.onLine) {
+            const unitParam = unit === "metric" ? "imperial" : "metric";
+            localStorage.setItem("unit", unitParam);
+            changeUnit(unitParam);
+            refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
+        } else {
+            setError("Zmiana jednostki niemożliwa w trybie offline! Spróbuj później")
+        }
     }
 
     useEffect(() => {
@@ -49,8 +53,12 @@ export default () => {
             else
                 unitParam = unit;
 
-            if(citiesFromStorage)
+            if(citiesFromStorage && navigator.onLine)
                 refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
+            else if (citiesFromStorage && !navigator.onLine) {
+                setCities(citiesFromStorage);
+                setLoading(false);
+            }
             else
                 setLoading(false);
         },
