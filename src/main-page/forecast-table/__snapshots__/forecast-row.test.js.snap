@@ -10,11 +10,22 @@ exports[`Forecast row should render correctly with given props 1`] = `
   <td
     className="text-center"
   >
-    <Link
-      to="/details/1"
+    <Online
+      polling={true}
+      wrapperType="span"
+    >
+      <Link
+        to="/details/1"
+      >
+        Sth
+      </Link>
+    </Online>
+    <Offline
+      polling={true}
+      wrapperType="span"
     >
       Sth
-    </Link>
+    </Offline>
   </td>
   <td
     className="text-center"
