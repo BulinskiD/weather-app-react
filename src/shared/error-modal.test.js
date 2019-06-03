@@ -5,14 +5,21 @@ import {shallow} from "enzyme";
 
 
 describe('Error modal', ()=>{
-    const clickFn = jest.fn();
+
+    it('should should render without crash without props', ()=>{
+        const div = document.createElement('div');
+        ReactDOM.render(<ErrorModal />, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
     it('should render correctly with given props', ()=>{
-        const component = shallow(<ErrorModal onClick={clickFn}>Error</ErrorModal>);
+        const clickFn = jest.fn();
+        const component = shallow(<ErrorModal onClose={clickFn}>Error</ErrorModal>);
         expect(component).toMatchSnapshot();
     });
 
     it('should invoke clickFn when button is clicked', ()=>{
-        const component = shallow(<ErrorModal onClick={clickFn}>Error</ErrorModal>);
+        const clickFn = jest.fn();
+        const component = shallow(<ErrorModal onClose={clickFn}>Error</ErrorModal>);
         component.find("Button").simulate('click');
 
         expect(clickFn).toHaveBeenCalledTimes(1);

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link button should render correctly with given props 1`] = `
+<Link
+  className="btn btn-primary offset-11 col-1 bg-light text-info"
+  to="test"
+>
+  Text
+</Link>
+`;

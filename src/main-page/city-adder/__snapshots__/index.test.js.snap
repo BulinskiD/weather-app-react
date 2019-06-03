@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`City adder should render correctly with given props 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <Bootstrap(Row)
+    className="mx-4"
+  >
+    <Bootstrap(InputGroup)>
+      <FormControl
+        aria-label="city"
+        as="input"
+        className="col-8"
+        onChange={[Function]}
+        placeholder="Nazwa miasta"
+        value=""
+      />
+      <Button
+        active={false}
+        className="offset-1 col-3"
+        disabled={false}
+        type="submit"
+        variant="primary"
+      >
+        <ContextConsumer>
+          <Component />
+        </ContextConsumer>
+        Dodaj
+      </Button>
+    </Bootstrap(InputGroup)>
+  </Bootstrap(Row)>
+</form>
+`;

@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-export default (props) => {
+const ErrorModal =  (props) => {
     return (
-        <Modal.Dialog>
+        <Modal show={props.show} onHide={props.onClose}>
             <Modal.Header>
                 <Modal.Title>Wystąpił błąd!</Modal.Title>
             </Modal.Header>
@@ -16,6 +18,14 @@ export default (props) => {
             <Modal.Footer>
                 <Button onClick={props.onClose} variant="danger">Zamknij</Button>
             </Modal.Footer>
-        </Modal.Dialog>
+        </Modal>
     );
 }
+
+ErrorModal.propTypes = {
+    onClose: PropTypes.func,
+    children: PropTypes.string
+}
+
+
+export default ErrorModal;
