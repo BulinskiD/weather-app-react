@@ -14,6 +14,7 @@ describe('Error modal', ()=>{
     it('should render correctly with given props', ()=>{
         const clickFn = jest.fn();
         const component = shallow(<ErrorModal onClose={clickFn}>Error</ErrorModal>);
+        expect(component.find("ModalBody").text()).toBe("Error");
         expect(component).toMatchSnapshot();
     });
 

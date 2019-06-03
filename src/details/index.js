@@ -15,7 +15,7 @@ const Details = (props) => {
 
     const [cityDetails, setCityDetails] = useState({});
     const [unitString, setUnitString] = useState("");
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {

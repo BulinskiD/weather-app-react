@@ -11,11 +11,11 @@ export default () =>{
        return(
            /** ASK ABOUT IT **/
            <div onChange={toggleUnit}>
-               <div>
+               <div className="radios">
                    <input type="radio"id="cel" name="unit" value="metric" onChange={() => {}} checked={unit === "metric"} />
                    <label htmlFor="cel">Celsjusz</label>
                </div>
-               <div>
+               <div className="radios">
                    <input type="radio" id="far" name="unit" value="imperial" onChange={() => {}}checked={unit === "imperial"} />
                    <label htmlFor="far">Fahrenheit</label>
                </div>

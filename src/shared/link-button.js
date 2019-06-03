@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const LinkButton = (props) => {
     return (
-        <Link to={props.path} className="btn btn-primary offset-11 col-1 bg-light text-info">{props.children}</Link>
+        <Link to={props.path} className="btn btn-primary offset-10 col-1 bg-light text-info">{props.children}</Link>
     );
 }
 
