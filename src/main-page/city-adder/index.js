@@ -16,7 +16,6 @@ const CityAdder = (props) => {
     const onAddCityHandler = e => {
         e.preventDefault();
         if(city.length >= 3) {
-            console.log(city);
             props.onAddCity(city);
             setCity("");
         }

@@ -16,6 +16,7 @@ const Details = (props) => {
     const [cityDetails, setCityDetails] = useState({});
     const [unitString, setUnitString] = useState("");
     const [error, setError] = useState(false);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,8 +24,8 @@ const Details = (props) => {
                 setCityDetails(result.data);
                 const unitSymbol = props.unit === 'metric' ? " C" : " F"
                 setUnitString(unitSymbol);
-            } catch(error) {
-                setError(handleError(error));
+            } catch(err) {
+                setError(handleError(err, ()=>{}));
             }
         }
         fetchData();
