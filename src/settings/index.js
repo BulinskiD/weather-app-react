@@ -12,16 +12,13 @@ export default () => {
         return (
             <>
                 <Online>
-                    {/** ASK ABOUT IT **/}
-                    <div onChange={toggleUnit}>
+                    <div className="radios-container">
                         <div className="radios">
-                            <input type="radio" id="cel" name="unit" value="metric" onChange={() => {
-                            }} checked={unit === "metric"}/>
+                            <input type="radio" id="cel" name="unit" value="metric" onChange={toggleUnit} checked={unit === "metric"}/>
                             <label htmlFor="cel">Celsjusz</label>
                         </div>
                         <div className="radios">
-                            <input type="radio" id="far" name="unit" value="imperial" onChange={() => {
-                            }} checked={unit === "imperial"}/>
+                            <input type="radio" id="far" name="unit" value="imperial" onChange={toggleUnit} checked={unit === "imperial"}/>
                             <label htmlFor="far">Fahrenheit</label>
                         </div>
                     </div>
