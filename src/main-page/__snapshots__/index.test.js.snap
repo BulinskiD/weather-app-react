@@ -1,7 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main page should render correctly with given props 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<Fragment>
+  <Online
+    polling={true}
+    wrapperType="span"
+  >
+    <CityAdder
+      onAddCity={[MockFunction]}
+    />
+  </Online>
+  <Offline
+    polling={true}
+    wrapperType="span"
+  >
+    <Alert
+      closeLabel="Close alert"
+      show={true}
+      transition={[Function]}
+      variant="warning"
+    >
+      Dodawanie nowych miast niemożliwe w trybie offline!
+    </Alert>
+  </Offline>
+  <hr />
+  <ForecastTable
+    cities={
+      Array [
+        Object {
+          "id": 1,
+          "name": "Sth",
+          "temperature": "20.0",
+        },
+      ]
+    }
+    onRemoveCity={[MockFunction]}
+  />
+</Fragment>
 `;
