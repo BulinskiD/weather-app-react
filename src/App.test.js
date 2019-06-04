@@ -25,11 +25,7 @@ body.appendChild(modalRoot);
 
 describe('App', ()=>{
     it('should match snapshot', () => {
-        const component = shallow(<App />);
+        const component = shallow(<App/>);
         expect(component).toMatchSnapshot();
-    });
-
-    it('should match snapshot', () => {
-        const component = mount(<App />);
     });
 });

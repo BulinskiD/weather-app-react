@@ -12,11 +12,11 @@ import Details from './details';
 import UnitContext from './context/unit-context';
 import LoadingContext from './context/loading-context';
 import ErrorModal from "./shared/error-modal";
-import setCities from "./hooks/city-hook";
+import useCities from "./hooks/city-hook";
 
 export default () => {
 
-    const [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = setCities();
+    const [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = useCities();
 
 
     /**** Render content ****/
