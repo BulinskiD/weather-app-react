@@ -16,8 +16,7 @@ const MainPage = (props) => {
             </Offline>
             <hr />
             <ForecastTable cities={props.cities} unit={props.unit} onRemoveCity={props.onRemoveCity} />
-
-            </>
+        </>
     );
 }
 
