@@ -19,8 +19,8 @@ export default (units, cities, setCities, setError, setLoading) => {
                       temperature: calculateAvg(cityObj.data.list)
                     }
         });
-            setCities(newState);
             setLoading(false);
+            setCities(newState);
     }).catch(error => {
         setError(handleError(error, setLoading));
     });

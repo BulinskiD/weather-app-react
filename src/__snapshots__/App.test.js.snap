@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should be filled with tests!:) 1`] = `
+<BrowserRouter>
+  <ContextProvider
+    value={
+      Object {
+        "loading": "true",
+      }
+    }
+  >
+    <ContextProvider
+      value={
+        Object {
+          "toggleUnit": [Function],
+          "unit": "metric",
+        }
+      }
+    >
+      <_default />
+      <Container
+        as="div"
+        fluid={false}
+      >
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          path="/settings"
+        />
+        <Route
+          component={[Function]}
+          path="/details/:id"
+        />
+      </Container>
+      <Portal
+        containerInfo={
+          <div
+            id="root"
+          />
+        }
+      >
+        <ErrorModal
+          onClose={[Function]}
+          show={false}
+        />
+      </Portal>
+    </ContextProvider>
+  </ContextProvider>
+</BrowserRouter>
+`;

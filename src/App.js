@@ -32,6 +32,8 @@ export default () => {
     //Loading state
     const [loading, setLoading] = useState("true");
 
+    /**** Units methods ****/
+
     const toggleUnit = () => {
         if(navigator.onLine) {
             const unitParam = unit === "metric" ? "imperial" : "metric";
@@ -43,27 +45,39 @@ export default () => {
         }
     }
 
+    const checkUnit = () => {
+        let unitParam = storage.getItem("unit");
+        //If unit param is set in localStorage, set in in state, else use default value
+        if(unitParam)
+            changeUnit(unitParam);
+        else
+            unitParam = unit;
+
+        return unitParam;
+    }
+
+    /**** On component mount ****/
+
     useEffect(() => {
         //Get cities from localStorage, and store them in state
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
-            let unitParam = storage.getItem("unit");
-            //If unit param is set in localStorage, set in in state, else use default value
-            if(unitParam)
-                changeUnit(unitParam);
-            else
-                unitParam = unit;
+            const unitParam = checkUnit();
 
+            //If online refresh temperatures on page load else if offline set cities from localStorage if available
             if(citiesFromStorage && navigator.onLine)
                 refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
             else if (citiesFromStorage && !navigator.onLine) {
                 setCities(citiesFromStorage);
                 setLoading(false);
             }
-            else
+            else {
                 setLoading(false);
+            }
         },
         // eslint-disable-next-line
         []);
+
+    /**** Cities methods ****/
 
     const onAddCity = async city =>{
         setLoading(true);
@@ -103,7 +117,8 @@ export default () => {
                             <Route path="/details/:id" component={(props) => <Details {...props} unit={unit} />} />
                         </Container>
 
-                        {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
+                        {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>,
+                            document.getElementById("root"))}
 
                     </UnitContext.Provider>
                 </LoadingContext.Provider>
