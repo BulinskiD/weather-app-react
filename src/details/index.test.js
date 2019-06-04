@@ -1,16 +1,17 @@
 import React from 'react';
-import mockAxios from 'jest-mock-axios';
 import Details from './index';
 import handleError from '../utils/handleError';
-import {shallow, mount} from "enzyme";
+import {mount} from "enzyme";
 import {act} from "react-dom/test-utils";
+import axios from 'axios';
 
 jest.mock('../utils/handleError');
+jest.mock('axios');
 
 handleError.mockReturnValue("Test");
 
 afterEach(()=>{
-    mockAxios.reset();
+    axios.mockClear();
     handleError.mockClear();
 });
 
@@ -32,10 +33,11 @@ describe('Details', ()=>{
         let component;
         act(()=>{
             component= mount(<Details {...id} unit={unit}/>);
+            //mockAxios.mockResponse(axiosResponseOK);
+            axios.mockResolvedValue(axiosResponseOK);
         });
-        mockAxios.mockResponse(axiosResponseOK);
         expect(component).toMatchSnapshot();
-        expect(mockAxios.get).toBeCalledTimes(1);
+        expect(axios.get).toBeCalledTimes(1);
     });
 
     it('should set error message properly when request fails on load', ()=>{
@@ -43,9 +45,9 @@ describe('Details', ()=>{
             mount(<Details {...id} unit={unit}/>);
         });
         try {
-            mockAxios.mockError(axiosResponseError);
+            axios.mockRejectedValue(axiosResponseError);
         } catch(error) {
-            expect(mockAxios.get).toBeCalledTimes(1);
+            expect(axios.get).toBeCalledTimes(1);
             expect(handleError).toBeCalledWith(axiosResponseError);
         }
     });

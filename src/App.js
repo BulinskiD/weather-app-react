@@ -23,43 +23,19 @@ export default () => {
     //State for unit context
     const [unit, changeUnit] = useState("metric");
 
+    //State for loading context
+    const [loading, setLoading] = useState(true);
+
     //Cities state
     const [cities, setCities] = useState([]);
 
     //Error state
     const [error, setError] = useState(null);
 
-    //Loading state
-    const [loading, setLoading] = useState("true");
-
-    /**** Units methods ****/
-
-    const toggleUnit = () => {
-        if(navigator.onLine) {
-            const unitParam = unit === "metric" ? "imperial" : "metric";
-            localStorage.setItem("unit", unitParam);
-            changeUnit(unitParam);
-            refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
-        } else {
-            setError("Zmiana jednostki niemożliwa w trybie offline! Spróbuj później")
-        }
-    }
-
-    const checkUnit = () => {
-        let unitParam = storage.getItem("unit");
-        //If unit param is set in localStorage, set in in state, else use default value
-        if(unitParam)
-            changeUnit(unitParam);
-        else
-            unitParam = unit;
-
-        return unitParam;
-    }
-
     /**** On component mount ****/
 
     useEffect(() => {
-        //Get cities from localStorage, and store them in state
+            //Get cities from localStorage, and store them in state
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
             const unitParam = checkUnit();
 
@@ -77,6 +53,30 @@ export default () => {
         // eslint-disable-next-line
         []);
 
+    /**** Units methods ****/
+
+    const toggleUnit = () => {
+        if(navigator.onLine) {
+            const unitParam = unit === "metric" ? "imperial" : "metric";
+            localStorage.setItem("unit", unitParam);
+            changeUnit(unitParam);
+            refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
+        } else {
+            setError("Zmiana jednostki niemożliwa w trybie offline! Spróbuj później")
+        }
+    }
+
+    const checkUnit = () => {
+        let unitParam = storage.getItem("unit");
+        //If unit param is set in localStorage, set it in state, else use default value
+        if(unitParam)
+            changeUnit(unitParam);
+        else
+            unitParam = unit;
+
+        return unitParam;
+    }
+
     /**** Cities methods ****/
 
     const onAddCity = async city =>{
@@ -91,35 +91,32 @@ export default () => {
                 //Should be placed in effect return function?
                 storage.setItem("cities", JSON.stringify([...cities, newCity]));
             }
+            setLoading(false);
         } catch(error) {
             setError(handleError(error, setLoading));
         }
-
-        setLoading(false);
     }
 
     const onRemoveCity = (city) => {
-        setCities(cities.filter(cityItem=> cityItem.id !== city.id));
+        setCities(cities.filter(cityItem => cityItem.id !== city.id));
         //Should be placed in effect return function?
-        storage.setItem("cities", JSON.stringify(cities.filter(cityItem=> cityItem.id !== city.id)));
+        storage.setItem("cities", JSON.stringify(cities.filter(cityItem => cityItem.id !== city.id)));
     }
+
+    /**** Render content ****/
 
     return (
             <BrowserRouter>
                 <LoadingContext.Provider value={{loading}}>
                     <UnitContext.Provider value={{unit, toggleUnit}}>
-
                         <Header />
-
                         <Container>
                             <Route path="/" exact component={() => <MainPage onRemoveCity={onRemoveCity} onAddCity={onAddCity} cities={cities} />}></Route>
                             <Route path="/settings" component={Settings} />
                             <Route path="/details/:id" component={(props) => <Details {...props} unit={unit} />} />
                         </Container>
-
                         {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>,
                             document.getElementById("root"))}
-
                     </UnitContext.Provider>
                 </LoadingContext.Provider>
             </BrowserRouter>

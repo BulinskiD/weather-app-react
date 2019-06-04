@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should be filled with tests!:) 1`] = `
+exports[`App should match snapshot 1`] = `
 <BrowserRouter>
   <ContextProvider
     value={
       Object {
-        "loading": "true",
+        "loading": true,
       }
     }
   >
