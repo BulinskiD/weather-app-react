@@ -178,7 +178,7 @@ exports[`ForecastTable should display table when loading is false 1`] = `
                     className="text-center"
                   >
                     20.00
-                     ° 
+                     °
                     F
                   </td>
                   <td
@@ -307,7 +307,7 @@ exports[`ForecastTable should display table when loading is false 1`] = `
                     className="text-center"
                   >
                     20.00
-                     ° 
+                     °
                     F
                   </td>
                   <td

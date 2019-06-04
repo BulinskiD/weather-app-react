@@ -31,7 +31,7 @@ exports[`Forecast row should render correctly with given props 1`] = `
     className="text-center"
   >
     20.0
-     ° 
+     °
     F
   </td>
   <td

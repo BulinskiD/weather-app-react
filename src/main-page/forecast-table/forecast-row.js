@@ -19,7 +19,7 @@ const ForecastRow = (props) => {
               <Online><Link to={'/details/'+props.city.id}>{props.city.name}</Link></Online>
               <Offline>{props.city.name}</Offline>
           </td>
-          <td className="text-center">{props.city.temperature} &#176; {props.unit==='metric' ? 'C' : 'F'}</td>
+          <td className="text-center">{props.city.temperature} &#176;{props.unit==='metric' ? 'C' : 'F'}</td>
           <td className="text-center">
               <Button onClick={onClickHandler} className="col-12 bg-light text-danger" variant="danger">
                   <FontAwesomeIcon style={{marginRight: "3%"}} icon={faMinusCircle}/>

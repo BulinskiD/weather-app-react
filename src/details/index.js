@@ -22,15 +22,21 @@ const Details = (props) => {
             try {
                 const result = await forecastApi.get("", {params: {id: props.match.params.id, units: props.unit}})
                 setCityDetails(result.data);
-                const unitSymbol = props.unit === 'metric' ? " C" : " F"
-                setUnitString(unitSymbol);
             } catch(err) {
                 setError(handleError(err, ()=>{}));
             }
         }
         fetchData();
     }, [props.match.params.id, props.unit]);
-    
+
+
+    useEffect( ()=>{
+        let unitSymbol = " °";
+        unitSymbol += props.unit === 'metric' ? "C" : "F"
+        setUnitString(unitSymbol);
+    }, [props.unit]);
+
+
     if(cityDetails.city)
         return (
             <div>

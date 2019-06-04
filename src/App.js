@@ -35,11 +35,11 @@ export default () => {
     /**** On component mount ****/
 
     useEffect(() => {
-            //Get cities from localStorage, and store them in state
+            /**** Get cities from localStorage, and store them in state ****/
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
             const unitParam = checkUnit();
 
-            //If online refresh temperatures on page load else if offline set cities from localStorage if available
+            /**** If online refresh temperatures on page load else if offline set cities from localStorage if available ****/
             if(citiesFromStorage && navigator.onLine)
                 refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
             else if (citiesFromStorage && !navigator.onLine) {
@@ -68,7 +68,7 @@ export default () => {
 
     const checkUnit = () => {
         let unitParam = storage.getItem("unit");
-        //If unit param is set in localStorage, set it in state, else use default value
+        /**** If unit param is set in localStorage, set it in state, else use default value ****/
         if(unitParam)
             changeUnit(unitParam);
         else
@@ -88,7 +88,6 @@ export default () => {
                 setError("Miasto znajduje się już na liście!");
             } else {
                 setCities([...cities, newCity]);
-                //Should be placed in effect return function?
                 storage.setItem("cities", JSON.stringify([...cities, newCity]));
             }
             setLoading(false);
@@ -99,7 +98,6 @@ export default () => {
 
     const onRemoveCity = (city) => {
         setCities(cities.filter(cityItem => cityItem.id !== city.id));
-        //Should be placed in effect return function?
         storage.setItem("cities", JSON.stringify(cities.filter(cityItem => cityItem.id !== city.id)));
     }
 

@@ -33,7 +33,6 @@ describe('Details', ()=>{
         let component;
         act(()=>{
             component= mount(<Details {...id} unit={unit}/>);
-            //mockAxios.mockResponse(axiosResponseOK);
             axios.mockResolvedValue(axiosResponseOK);
         });
         expect(component).toMatchSnapshot();
