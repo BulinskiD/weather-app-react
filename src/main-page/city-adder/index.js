@@ -16,7 +16,6 @@ const CityAdder = (props) => {
     const onAddCityHandler = e => {
         e.preventDefault();
         if(city.length >= 3) {
-            console.log(city);
             props.onAddCity(city);
             setCity("");
         }
@@ -27,13 +26,13 @@ const CityAdder = (props) => {
             <Row className="mx-4">
                 <InputGroup>
                     <FormControl
-                        className="col-8"
+                        className="col-lg-8 col-12"
                         placeholder="Nazwa miasta"
                         aria-label="city"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                     />
-                <Button type="submit" className="offset-1 col-3" variant="primary">
+                <Button type="submit" className="offset-lg-1 col-lg-3 offset-0 col-12 my-3 my-lg-0" variant="primary">
                     <LoadingContext.Consumer>
                         {({loading}) => {
                             return loading ? <FontAwesomeIcon className="fa-spin" style={{marginRight: "3%"}} icon={faSpinner}/> : <FontAwesomeIcon style={{marginRight: "3%"}} icon={faSearchPlus}/>

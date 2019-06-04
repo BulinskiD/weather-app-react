@@ -1,3 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Details should render correctly with given props 1`] = `""`;
+exports[`Details should call axios on load 1`] = `
+<Details
+  match={
+    Object {
+      "params": Object {
+        "id": 1,
+      },
+    }
+  }
+  unit="imperial"
+/>
+`;

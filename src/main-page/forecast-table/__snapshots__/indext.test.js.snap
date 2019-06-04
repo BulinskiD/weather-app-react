@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ForecastTable should display loading component when loading is true 1`] = `
+<StaticRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+    staticContext={Object {}}
+  >
+    <ForecastTable
+      cities={
+        Array [
+          Object {
+            "id": 1,
+            "name": "Gorlice",
+            "temperature": "20.00",
+          },
+          Object {
+            "id": 2,
+            "name": "Gorlice",
+            "temperature": "20.00",
+          },
+        ]
+      }
+      onRemoveCity={[MockFunction]}
+      unit="imperial"
+    >
+      <_default>
+        <div
+          className="in-container loader"
+        >
+          <div
+            className="square first"
+          />
+          <div
+            className="square second"
+          />
+          <div
+            className="square third"
+          />
+        </div>
+      </_default>
+    </ForecastTable>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`ForecastTable should display table when loading is false 1`] = `
+<StaticRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+    staticContext={Object {}}
+  >
+    <ForecastTable
+      cities={
+        Array [
+          Object {
+            "id": 1,
+            "name": "Gorlice",
+            "temperature": "20.00",
+          },
+          Object {
+            "id": 2,
+            "name": "Gorlice",
+            "temperature": "20.00",
+          },
+        ]
+      }
+      onRemoveCity={[MockFunction]}
+      unit="imperial"
+    >
+      <Bootstrap(Table)>
+        <Table
+          bsPrefix="table"
+        >
+          <table
+            className="table"
+          >
+            <thead>
+              <tr>
+                <th
+                  className="text-center"
+                >
+                  #
+                </th>
+                <th
+                  className="text-center"
+                >
+                  Miasto
+                </th>
+                <th
+                  className="text-center"
+                >
+                  Średnia prognozowana temperatura
+                </th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              <ForecastRow
+                city={
+                  Object {
+                    "id": 1,
+                    "name": "Gorlice",
+                    "temperature": "20.00",
+                  }
+                }
+                index={1}
+                key="1"
+                onRemoveCity={[MockFunction]}
+                unit="imperial"
+              >
+                <tr>
+                  <td
+                    className="text-center"
+                  >
+                    1
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    <Online
+                      polling={true}
+                      wrapperType="span"
+                    >
+                      <Link
+                        to="/details/1"
+                      >
+                        <a
+                          href="/details/1"
+                          onClick={[Function]}
+                        >
+                          Gorlice
+                        </a>
+                      </Link>
+                    </Online>
+                    <Offline
+                      polling={true}
+                      wrapperType="span"
+                    />
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    20.00
+                     °
+                    F
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    <Button
+                      active={false}
+                      className="col-12 bg-light text-danger"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                      variant="danger"
+                    >
+                      <button
+                        className="col-12 bg-light text-danger btn btn-danger"
+                        disabled={false}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <FontAwesomeIcon
+                          border={false}
+                          className=""
+                          fixedWidth={false}
+                          flip={null}
+                          icon={
+                            Object {
+                              "icon": Array [
+                                512,
+                                512,
+                                Array [],
+                                "f056",
+                                "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z",
+                              ],
+                              "iconName": "minus-circle",
+                              "prefix": "fas",
+                            }
+                          }
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          style={
+                            Object {
+                              "marginRight": "3%",
+                            }
+                          }
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-minus-circle fa-w-16 "
+                            data-icon="minus-circle"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            style={
+                              Object {
+                                "marginRight": "3%",
+                              }
+                            }
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                        Usuń
+                      </button>
+                    </Button>
+                  </td>
+                </tr>
+              </ForecastRow>
+              <ForecastRow
+                city={
+                  Object {
+                    "id": 2,
+                    "name": "Gorlice",
+                    "temperature": "20.00",
+                  }
+                }
+                index={2}
+                key="2"
+                onRemoveCity={[MockFunction]}
+                unit="imperial"
+              >
+                <tr>
+                  <td
+                    className="text-center"
+                  >
+                    2
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    <Online
+                      polling={true}
+                      wrapperType="span"
+                    >
+                      <Link
+                        to="/details/2"
+                      >
+                        <a
+                          href="/details/2"
+                          onClick={[Function]}
+                        >
+                          Gorlice
+                        </a>
+                      </Link>
+                    </Online>
+                    <Offline
+                      polling={true}
+                      wrapperType="span"
+                    />
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    20.00
+                     °
+                    F
+                  </td>
+                  <td
+                    className="text-center"
+                  >
+                    <Button
+                      active={false}
+                      className="col-12 bg-light text-danger"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                      variant="danger"
+                    >
+                      <button
+                        className="col-12 bg-light text-danger btn btn-danger"
+                        disabled={false}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <FontAwesomeIcon
+                          border={false}
+                          className=""
+                          fixedWidth={false}
+                          flip={null}
+                          icon={
+                            Object {
+                              "icon": Array [
+                                512,
+                                512,
+                                Array [],
+                                "f056",
+                                "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z",
+                              ],
+                              "iconName": "minus-circle",
+                              "prefix": "fas",
+                            }
+                          }
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          style={
+                            Object {
+                              "marginRight": "3%",
+                            }
+                          }
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-minus-circle fa-w-16 "
+                            data-icon="minus-circle"
+                            data-prefix="fas"
+                            focusable="false"
+                            role="img"
+                            style={
+                              Object {
+                                "marginRight": "3%",
+                              }
+                            }
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                        Usuń
+                      </button>
+                    </Button>
+                  </td>
+                </tr>
+              </ForecastRow>
+            </tbody>
+          </table>
+        </Table>
+      </Bootstrap(Table)>
+    </ForecastTable>
+  </Router>
+</StaticRouter>
+`;

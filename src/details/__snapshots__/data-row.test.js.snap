@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataRow should render component correctly for given props 1`] = `
+<Bootstrap(Row)
+  className="mx-3 my-4"
+>
+  <Col
+    as="div"
+  >
+    test
+  </Col>
+  <Col
+    as="div"
+  >
+    3
+  </Col>
+</Bootstrap(Row)>
+`;

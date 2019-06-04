@@ -1,0 +1,523 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings should invoke toggleUnit on #far change 1`] = `
+<StaticRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+    staticContext={Object {}}
+  >
+    <_default>
+      <div>
+        <h2>
+          Ustawienia
+        </h2>
+        <hr />
+        <DataRow
+          data={
+            <React.Fragment>
+              <Online
+                polling={true}
+                wrapperType="span"
+              >
+                <div
+                  className="radios-container"
+                >
+                  <div
+                    className="radios"
+                  >
+                    <input
+                      checked={false}
+                      id="cel"
+                      name="unit"
+                      onChange={
+                        [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                          "results": Array [
+                            Object {
+                              "type": "return",
+                              "value": undefined,
+                            },
+                          ],
+                        }
+                      }
+                      type="radio"
+                      value="metric"
+                    />
+                    <label
+                      htmlFor="cel"
+                    >
+                      Celsjusz
+                    </label>
+                  </div>
+                  <div
+                    className="radios"
+                  >
+                    <input
+                      checked={true}
+                      id="far"
+                      name="unit"
+                      onChange={
+                        [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                          "results": Array [
+                            Object {
+                              "type": "return",
+                              "value": undefined,
+                            },
+                          ],
+                        }
+                      }
+                      type="radio"
+                      value="imperial"
+                    />
+                    <label
+                      htmlFor="far"
+                    >
+                      Fahrenheit
+                    </label>
+                  </div>
+                </div>
+              </Online>
+              <Offline
+                polling={true}
+                wrapperType="span"
+              >
+                Fahrenheit
+              </Offline>
+            </React.Fragment>
+          }
+          title="Jednostka"
+        >
+          <Bootstrap(Row)
+            className="mx-3 my-4"
+          >
+            <Row
+              as="div"
+              bsPrefix="row"
+              className="mx-3 my-4"
+              noGutters={false}
+            >
+              <div
+                className="mx-3 my-4 row"
+              >
+                <Col
+                  as="div"
+                >
+                  <div
+                    className="col"
+                  >
+                    Jednostka
+                  </div>
+                </Col>
+                <Col
+                  as="div"
+                >
+                  <div
+                    className="col"
+                  >
+                    <Online
+                      polling={true}
+                      wrapperType="span"
+                    >
+                      <div
+                        className="radios-container"
+                      >
+                        <div
+                          className="radios"
+                        >
+                          <input
+                            checked={false}
+                            id="cel"
+                            name="unit"
+                            onChange={
+                              [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                                "results": Array [
+                                  Object {
+                                    "type": "return",
+                                    "value": undefined,
+                                  },
+                                ],
+                              }
+                            }
+                            type="radio"
+                            value="metric"
+                          />
+                          <label
+                            htmlFor="cel"
+                          >
+                            Celsjusz
+                          </label>
+                        </div>
+                        <div
+                          className="radios"
+                        >
+                          <input
+                            checked={true}
+                            id="far"
+                            name="unit"
+                            onChange={
+                              [MockFunction] {
+                                "calls": Array [
+                                  Array [],
+                                ],
+                                "results": Array [
+                                  Object {
+                                    "type": "return",
+                                    "value": undefined,
+                                  },
+                                ],
+                              }
+                            }
+                            type="radio"
+                            value="imperial"
+                          />
+                          <label
+                            htmlFor="far"
+                          >
+                            Fahrenheit
+                          </label>
+                        </div>
+                      </div>
+                    </Online>
+                    <Offline
+                      polling={true}
+                      wrapperType="span"
+                    />
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </Bootstrap(Row)>
+        </DataRow>
+        <hr />
+        <LinkButton
+          path="/"
+        >
+          <Link
+            className="btn btn-primary offset-lg-10 col-lg-2 offset-0 col-6 bg-light text-info"
+            to="/"
+          >
+            <a
+              className="btn btn-primary offset-lg-10 col-lg-2 offset-0 col-6 bg-light text-info"
+              href="/"
+              onClick={[Function]}
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f0a8",
+                      "M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z",
+                    ],
+                    "iconName": "arrow-circle-left",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-arrow-circle-left fa-w-16 "
+                  data-icon="arrow-circle-left"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </FontAwesomeIcon>
+              Powrót
+            </a>
+          </Link>
+        </LinkButton>
+      </div>
+    </_default>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Settings should match snapshot 1`] = `
+<StaticRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+    staticContext={Object {}}
+  >
+    <_default>
+      <div>
+        <h2>
+          Ustawienia
+        </h2>
+        <hr />
+        <DataRow
+          data={
+            <React.Fragment>
+              <Online
+                polling={true}
+                wrapperType="span"
+              >
+                <div
+                  className="radios-container"
+                >
+                  <div
+                    className="radios"
+                  >
+                    <input
+                      checked={false}
+                      id="cel"
+                      name="unit"
+                      onChange={[MockFunction]}
+                      type="radio"
+                      value="metric"
+                    />
+                    <label
+                      htmlFor="cel"
+                    >
+                      Celsjusz
+                    </label>
+                  </div>
+                  <div
+                    className="radios"
+                  >
+                    <input
+                      checked={true}
+                      id="far"
+                      name="unit"
+                      onChange={[MockFunction]}
+                      type="radio"
+                      value="imperial"
+                    />
+                    <label
+                      htmlFor="far"
+                    >
+                      Fahrenheit
+                    </label>
+                  </div>
+                </div>
+              </Online>
+              <Offline
+                polling={true}
+                wrapperType="span"
+              >
+                Fahrenheit
+              </Offline>
+            </React.Fragment>
+          }
+          title="Jednostka"
+        >
+          <Bootstrap(Row)
+            className="mx-3 my-4"
+          >
+            <Row
+              as="div"
+              bsPrefix="row"
+              className="mx-3 my-4"
+              noGutters={false}
+            >
+              <div
+                className="mx-3 my-4 row"
+              >
+                <Col
+                  as="div"
+                >
+                  <div
+                    className="col"
+                  >
+                    Jednostka
+                  </div>
+                </Col>
+                <Col
+                  as="div"
+                >
+                  <div
+                    className="col"
+                  >
+                    <Online
+                      polling={true}
+                      wrapperType="span"
+                    >
+                      <div
+                        className="radios-container"
+                      >
+                        <div
+                          className="radios"
+                        >
+                          <input
+                            checked={false}
+                            id="cel"
+                            name="unit"
+                            onChange={[MockFunction]}
+                            type="radio"
+                            value="metric"
+                          />
+                          <label
+                            htmlFor="cel"
+                          >
+                            Celsjusz
+                          </label>
+                        </div>
+                        <div
+                          className="radios"
+                        >
+                          <input
+                            checked={true}
+                            id="far"
+                            name="unit"
+                            onChange={[MockFunction]}
+                            type="radio"
+                            value="imperial"
+                          />
+                          <label
+                            htmlFor="far"
+                          >
+                            Fahrenheit
+                          </label>
+                        </div>
+                      </div>
+                    </Online>
+                    <Offline
+                      polling={true}
+                      wrapperType="span"
+                    />
+                  </div>
+                </Col>
+              </div>
+            </Row>
+          </Bootstrap(Row)>
+        </DataRow>
+        <hr />
+        <LinkButton
+          path="/"
+        >
+          <Link
+            className="btn btn-primary offset-lg-10 col-lg-2 offset-0 col-6 bg-light text-info"
+            to="/"
+          >
+            <a
+              className="btn btn-primary offset-lg-10 col-lg-2 offset-0 col-6 bg-light text-info"
+              href="/"
+              onClick={[Function]}
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f0a8",
+                      "M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z",
+                    ],
+                    "iconName": "arrow-circle-left",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-arrow-circle-left fa-w-16 "
+                  data-icon="arrow-circle-left"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </FontAwesomeIcon>
+              Powrót
+            </a>
+          </Link>
+        </LinkButton>
+      </div>
+    </_default>
+  </Router>
+</StaticRouter>
+`;

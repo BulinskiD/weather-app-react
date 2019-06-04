@@ -1,4 +1,3 @@
-//Refresh cities
 import forecastApi from "../api/forecastApi";
 import calculateAvg from "./calculateAvg";
 import handleError from "./handleError";
@@ -19,9 +18,9 @@ export default (units, cities, setCities, setError, setLoading) => {
                       name: cityObj.data.city.name,
                       temperature: calculateAvg(cityObj.data.list)
                     }
-        })
-        setCities(newState);
-        setLoading(false);
+        });
+            setLoading(false);
+            setCities(newState);
     }).catch(error => {
         setError(handleError(error, setLoading));
     });
