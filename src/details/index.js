@@ -23,7 +23,7 @@ const Details = (props) => {
                 const result = await forecastApi.get("", {params: {id: props.match.params.id, units: props.unit}})
                 setCityDetails(result.data);
             } catch(err) {
-                setError(handleError(err, setError));
+                setError(handleError(err, ()=>{}));
             }
         }
         fetchData();
@@ -49,12 +49,16 @@ const Details = (props) => {
                 <LinkButton path="/">
                     <FontAwesomeIcon icon={faArrowCircleLeft}/>Powrót
                 </LinkButton>
-                {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => setError(null)}>{error}</ErrorModal>, document.getElementById("root"))}
+                {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => {setError(null);  props.history.push('/')}}>{error}</ErrorModal>, document.getElementById("root"))}
 
             </div>
         );
     else
-        return ''
+        return(
+            <>
+            {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => {setError(null); props.history.push('/')}}>{error}</ErrorModal>, document.getElementById("root"))}
+            </>
+        );
 }
 
 
