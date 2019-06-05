@@ -20,7 +20,7 @@ export default () => {
 
     /**** On load ****/
     useEffect(() => {
-            /**** Get cities from localStorage, and store them in state ****/
+            /**** Get cities and unit from localStorage ****/
             const citiesFromStorage = JSON.parse(storage.getItem("cities"));
             const unitParam = checkUnit();
 
