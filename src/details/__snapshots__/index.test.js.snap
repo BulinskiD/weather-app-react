@@ -10,5 +10,88 @@ exports[`Details should call axios on load 1`] = `
     }
   }
   unit="imperial"
-/>
+>
+  <Portal
+    containerInfo={
+      <div
+        id="root"
+      />
+    }
+  >
+    <ErrorModal
+      onClose={[Function]}
+      show={false}
+    >
+      <Bootstrap(Modal)
+        onHide={[Function]}
+        show={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          bsPrefix="modal"
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          manager={
+            BootstrapModalManager {
+              "adjustAndStore": [Function],
+              "containers": Array [],
+              "data": Array [],
+              "handleContainerOverflow": true,
+              "hideSiblingNodes": true,
+              "modals": Array [],
+              "restore": [Function],
+              "scrollbarSize": 0,
+            }
+          }
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            className="modal"
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "adjustAndStore": [Function],
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "restore": [Function],
+                "scrollbarSize": 0,
+              }
+            }
+            onClick={[Function]}
+            onEnter={[Function]}
+            onEntering={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            onMouseUp={[Function]}
+            renderBackdrop={[Function]}
+            restoreFocus={true}
+            role="dialog"
+            show={false}
+            style={Object {}}
+            transition={[Function]}
+          />
+        </Modal>
+      </Bootstrap(Modal)>
+    </ErrorModal>
+  </Portal>
+</Details>
 `;

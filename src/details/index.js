@@ -56,9 +56,9 @@ const Details = (props) => {
     else
         return(
             <>
-            {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => {setError(null); props.history.push('/')}}>{error}</ErrorModal>, document.getElementById("root"))}
+                {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => {setError(null);  props.history.push('/')}}>{error}</ErrorModal>, document.getElementById("root"))}
             </>
-        );
+            );
 }
 
 

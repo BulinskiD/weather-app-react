@@ -20,6 +20,12 @@ describe('Details', ()=>{
     const id = {match: {params:{id: 1}}};
     const unit = "imperial";
 
+    // add a div with #root id for react.createPortal
+    const modalRoot = global.document.createElement('div');
+    modalRoot.setAttribute('id', 'root');
+    const body = global.document.querySelector('body');
+    body.appendChild(modalRoot);
+
     const axiosResponseOK = {city: {coord: {lat: 1, lon: 1}}, list: []};
     const axiosResponseError = {
         data: {},
