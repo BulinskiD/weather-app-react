@@ -3,7 +3,7 @@ describe("Managing city list", ()=>{
     it("Should correctly navigate to details page and return", ()=> {
         cy.visit("http://localhost:3000");
         cy.wait(500);
-        cy.get('input.col-8').type('Gorlice');
+        cy.get('input.col-lg-8').type('Gorlice');
         cy.get('button.btn-primary').click();
 
         cy.get('tr td:nth-child(2)').contains("Gorlice").click();
@@ -16,7 +16,7 @@ describe("Managing city list", ()=>{
     it("Should correctly display units depending on settings", ()=> {
         cy.visit("http://localhost:3000");
         cy.wait(500);
-        cy.get('input.col-8').type('Gorlice');
+        cy.get('input.col-lg-8').type('Gorlice');
         cy.get('button.btn-primary').click();
 
         cy.get('nav a').click();
