@@ -23,7 +23,7 @@ const Details = (props) => {
                 const result = await forecastApi.get("", {params: {id: props.match.params.id, units: props.unit}})
                 setCityDetails(result.data);
             } catch(err) {
-                setError(handleError(err, ()=>{}));
+                setError(handleError(err, setError));
             }
         }
         fetchData();
@@ -44,7 +44,7 @@ const Details = (props) => {
                 <hr />
                     <DataRow data={cityDetails.city.coord.lat} title='Szerokość geograficzna'></DataRow>
                     <DataRow data={cityDetails.city.coord.lon} title='Długość geograficzna'></DataRow>
-                    <DataRow data={calculateAvg(cityDetails.list) + unitString} title='Srednia temperatura'></DataRow>
+                    <DataRow data={calculateAvg(cityDetails.list) + unitString} title='Średnia temperatura'></DataRow>
                 <hr />
                 <LinkButton path="/">
                     <FontAwesomeIcon icon={faArrowCircleLeft}/>Powrót
