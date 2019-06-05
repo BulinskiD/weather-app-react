@@ -8,7 +8,7 @@
       "type": "image/png"
     },
     {
-      "src": "/images/splash.png",
+      "src": "splash.png",
       "type": "image/png",
       "sizes": "512x512"
     }
