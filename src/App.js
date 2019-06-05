@@ -18,7 +18,6 @@ export default () => {
 
     const [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = useCities();
 
-
     /**** Render content ****/
     return (
             <BrowserRouter>
