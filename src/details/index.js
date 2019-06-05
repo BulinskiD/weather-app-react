@@ -50,7 +50,6 @@ const Details = (props) => {
                     <FontAwesomeIcon icon={faArrowCircleLeft}/>Powrót
                 </LinkButton>
                 {ReactDOM.createPortal(<ErrorModal show={error ? true : false} onClose={() => {setError(null);  props.history.push('/')}}>{error}</ErrorModal>, document.getElementById("root"))}
-
             </div>
         );
     else

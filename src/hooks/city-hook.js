@@ -1,5 +1,4 @@
-import {useState, useEffect} from 'react';
-import refreshCitiesTemperatureAndSetState from "../utils/refreshCitiesTemperatureAndSetState";
+import {useState} from 'react';
 import forecastApi from "../api/forecastApi";
 import calculateAvg from "../utils/calculateAvg";
 import handleError from "../utils/handleError";
@@ -9,60 +8,14 @@ export default () => {
 
     const [error, setError] = useState(null);
 
-    //State for unit context
-    const [unit, changeUnit] = useState("metric");
-
     //State for loading context
     const [loading, setLoading] = useState(true);
 
     //Cities state
     const [cities, setCities] = useState([]);
 
-    /**** On load ****/
-    useEffect(() => {
-            /**** Get cities and unit from localStorage ****/
-            const citiesFromStorage = JSON.parse(storage.getItem("cities"));
-            const unitParam = checkUnit();
-
-            /**** If online refresh temperatures on page load else if offline set cities from localStorage if available ****/
-            if(citiesFromStorage && navigator.onLine)
-                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
-            else if (citiesFromStorage && !navigator.onLine) {
-                setCities(citiesFromStorage);
-                setLoading(false);
-            }
-            else {
-                setLoading(false);
-            }
-        },
-        // eslint-disable-next-line
-        []);
-
-    /**** Units methods ****/
-    const toggleUnit = () => {
-        if(navigator.onLine) {
-            const unitParam = unit === "metric" ? "imperial" : "metric";
-            localStorage.setItem("unit", unitParam);
-            changeUnit(unitParam);
-            refreshCitiesTemperatureAndSetState(unitParam, cities, setCities, setError, setLoading);
-        } else {
-            setError("Zmiana jednostki niemożliwa w trybie offline! Spróbuj później")
-        }
-    }
-
-    const checkUnit = () => {
-        let unitParam = storage.getItem("unit");
-        /**** If unit param is set in localStorage, set it in state, else use default value ****/
-        if(unitParam)
-            changeUnit(unitParam);
-        else
-            unitParam = unit;
-
-        return unitParam;
-    }
-
     /**** Cities methods ****/
-    const onAddCity = async city =>{
+    const onAddCity = async (city, unit) =>{
         setLoading(true);
         try {
             const {data} = await forecastApi.get('', {params: {q: city, units: unit}});
@@ -85,5 +38,5 @@ export default () => {
     }
 
     /**** Return values ****/
-    return [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError];
+    return [loading, setLoading, onAddCity, onRemoveCity, cities, setCities, error, setError];
 }

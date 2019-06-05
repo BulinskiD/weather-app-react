@@ -1,6 +1,5 @@
 import { act } from 'react-dom/test-utils';
 import testHook from '../utils/testUtils/hookTestComponent';
-import refreshCitiesTemperatureAndSetState from "../utils/refreshCitiesTemperatureAndSetState";
 import calculateAvg from "../utils/calculateAvg";
 import handleError from "../utils/handleError";
 import useCities from './city-hook';
@@ -17,38 +16,19 @@ const axiosResponseError = {
     status: 500,
     statusText: 'Internal server error',
     headers: {},
-    config: {},
+    config: {}
 };
 
-let [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = [];
-testHook(() => {
-    [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = useCities();
-});
-
+let [loading, setLoading, onAddCity, onRemoveCity, cities, setCities, error, setError] = [];
 beforeEach(() => {
+    testHook(() => {
+        [loading, setLoading, onAddCity, onRemoveCity, cities, setCities, error, setError] = useCities();
+    });
     jest.resetAllMocks();
 });
 
 
 describe('Cities hook', () => {
-
-    it('should assign metric value to unit on load', () => {
-            expect(unit).toBe("metric");
-    });
-
-    it('should toggle unit to imperial on toggle unit', () => {
-        act(() => {
-            toggleUnit();
-        });
-        expect(unit).toBe("imperial");
-        expect(localStorage.setItem).toBeCalledWith('unit', 'imperial');
-
-        act(() => {
-            toggleUnit();
-        });
-        expect(localStorage.setItem).toBeCalledWith('unit', 'metric');
-        expect(refreshCitiesTemperatureAndSetState).toBeCalledTimes(2);
-    });
 
     it('Should add new item to local storage and set state when onAddCity is called with proper argument', async () => {
         expect.assertions(5);
@@ -58,7 +38,7 @@ describe('Cities hook', () => {
         axios.get.mockReturnValue(prom);
 
         act(()=>{
-            onAddCity('Gorlice');
+            onAddCity('Gorlice', 'metric');
         });
 
         await prom;
@@ -78,7 +58,7 @@ describe('Cities hook', () => {
         axios.get.mockReturnValue(prom);
 
         act(()=>{
-            onAddCity('Gorlice');
+            onAddCity('Gorlice', 'metric');
         });
 
         try {
@@ -90,21 +70,28 @@ describe('Cities hook', () => {
     });
 
     it('Should set proper error when city was already on list', async () => {
-        expect.assertions(4);
-        const cityToAssert = { id: 1, name: "Gorlice", temperature: 10 };
+        expect.assertions(6);
         calculateAvg.mockReturnValue(10);
         const prom = Promise.resolve(axiosResponseOK);
         axios.get.mockReturnValue(prom);
 
         act(()=>{
-            onAddCity('Gorlice');
-            onAddCity('Gorlice');
+            onAddCity('Gorlice', 'metric');
+        });
+
+        await prom;
+        expect(axios.get).toBeCalledTimes(1);
+        expect(cities.length).toBe(1);
+        expect(loading).toBe(false);
+
+
+        act(()=>{
+           onAddCity('Gorlice', 'metric');
         });
 
         await prom;
         expect(axios.get).toBeCalledTimes(2);
         expect(cities.length).toBe(1);
-        expect(loading).toBe(false);
         expect(error).toBe("Miasto znajduje się już na liście!");
     });
 
@@ -116,11 +103,15 @@ describe('Cities hook', () => {
         axios.get.mockReturnValue(prom);
 
         act(()=>{
-            onAddCity('Gorlice');
-            onRemoveCity(cityToRemove);
+            onAddCity('Gorlice', 'metric');
         });
 
         await prom;
+
+        act(()=>{
+            onRemoveCity(cityToRemove);
+        });
+
         expect(axios.get).toBeCalledTimes(1);
         expect(cities.length).toBe(0);
         expect(loading).toBe(false);

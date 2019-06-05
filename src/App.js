@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
@@ -13,10 +13,34 @@ import UnitContext from './context/unit-context';
 import LoadingContext from './context/loading-context';
 import ErrorModal from "./shared/error-modal";
 import useCities from "./hooks/city-hook";
+import useUnit from "./hooks/unit-hook";
+import checkUnit from "./utils/checkUnit";
+import refreshCitiesTemperatureAndSetState from "./utils/refreshCitiesTemperatureAndSetState";
 
 export default () => {
 
-    const [loading, unit, toggleUnit, onAddCity, onRemoveCity, cities, error, setError] = useCities();
+    const [loading, setLoading, onAddCity, onRemoveCity, cities, setCities, error, setError] = useCities();
+    const [unit, toggleUnit, setUnit] = useUnit();
+
+    /**** On load ****/
+    useEffect(() => {
+            /**** Get cities and unit from localStorage ****/
+            const citiesFromStorage = JSON.parse(localStorage.getItem("cities"));
+            const unitParam = checkUnit(unit, setUnit);
+
+            /**** If online refresh temperatures on page load else if offline set cities from localStorage if available ****/
+            if(citiesFromStorage && navigator.onLine)
+                refreshCitiesTemperatureAndSetState(unitParam, citiesFromStorage, setCities, setError, setLoading);
+            else if (citiesFromStorage && !navigator.onLine) {
+                setCities(citiesFromStorage);
+                setLoading(false);
+            }
+            else {
+                setLoading(false);
+            }
+        },
+        // eslint-disable-next-line
+        [unit]);
 
     /**** Render content ****/
     return (
