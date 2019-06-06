@@ -44,11 +44,11 @@ export default () => {
 
     /**** Refresh cities on unit change ****/
     useEffect( ()=>{
-        if(cities.length !== 0) {
-            refreshCitiesTemperatureAndSetState(unit, cities, setCities, setError, setLoading);
-        }
-    }, // eslint-disable-next-line
-        [unit]) ;
+            if(cities.length !== 0) {
+                refreshCitiesTemperatureAndSetState(unit, cities, setCities, setError, setLoading);
+            }
+        }, // eslint-disable-next-line
+        [unit]);
 
 
     /**** Render content ****/
